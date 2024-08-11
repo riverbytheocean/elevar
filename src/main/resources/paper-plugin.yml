@@ -1,0 +1,6 @@
+name: elevar
+version: '${version}'
+main: io.github.riverbytheocean.plugins.elevar.Elevar
+api-version: '1.21'
+description: simple plugin for doing block rising events
+loader: io.github.riverbytheocean.plugins.elevar.ElevarLoader

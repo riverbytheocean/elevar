@@ -1,0 +1,34 @@
+# hai :3
+# elevar config for people who want their changes to persist across restarts
+
+block: lava
+delay-between-rises: 40
+
+rise-height-limit: 318
+build-height-limit: 319
+
+nether: false
+
+safe-margin: 10
+ghosts: true
+ghosts-can-speak: false
+
+starter-period:
+  border-width: 500
+  time-length: 600
+  damage:
+    pvp: false
+    mobs: false
+    environmental: false
+
+second-period:
+  border-width: 100
+  time-length: 600
+  damage:
+    pvp: true
+    mobs: false
+    environmental: true
+
+elimination-period:
+  border-width: 20
+  time-length: 300
