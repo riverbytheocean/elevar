@@ -14,7 +14,7 @@ public class GeneralHeightLimitListener implements Listener {
             return;
         }
 
-        if (!(event.getBlock().getLocation().getBlockY() == Elevar.config().getInt("build-height-limit"))) {
+        if (!(event.getBlock().getLocation().getBlockY() > Elevar.config().getInt("build-height-limit"))) {
             return;
         }
 
