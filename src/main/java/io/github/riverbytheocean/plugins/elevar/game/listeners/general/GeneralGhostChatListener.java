@@ -56,7 +56,7 @@ public class GeneralGhostChatListener implements Listener {
             return;
         }
 
-        if (!Elevar.isGameRunning()) {
+        if (!ElevarServerUtils.hasGameStarted()) {
             return;
         }
 

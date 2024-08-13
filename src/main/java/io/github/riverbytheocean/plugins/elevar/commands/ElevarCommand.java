@@ -53,7 +53,6 @@ public class ElevarCommand {
                                             return Command.SINGLE_SUCCESS;
                                         }
 
-                                        Elevar.setGameRunning(true);
                                         GamePeriodStates.starter();
                                         return Command.SINGLE_SUCCESS;
                                     })

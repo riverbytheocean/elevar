@@ -117,7 +117,7 @@ public class ElevarPlayerUtils {
             return;
         }
 
-        Elevar.setGameRunning(false);
+        Elevar.setPeriod(GamePeriod.LOBBY);
 
     }
 

@@ -58,7 +58,7 @@ public class GamePeriodStates {
 
         Bukkit.getOnlinePlayers().forEach(player -> player.getInventory().clear());
 
-        if (!Elevar.isGameRunning()) {
+        if (!ElevarServerUtils.hasGameStarted()) {
             announceWinner();
             return;
         }
@@ -92,7 +92,7 @@ public class GamePeriodStates {
             @Override
             public void run() {
 
-                if (!Elevar.isGameRunning()) {
+                if (!ElevarServerUtils.hasGameStarted()) {
                     cancel();
                     return;
                 }
@@ -147,7 +147,7 @@ public class GamePeriodStates {
 
         }
 
-        if (!Elevar.isGameRunning()) {
+        if (!ElevarServerUtils.hasGameStarted()) {
             announceWinner();
             return;
         }
@@ -175,7 +175,7 @@ public class GamePeriodStates {
             @Override
             public void run() {
 
-                if (!Elevar.isGameRunning()) {
+                if (!ElevarServerUtils.hasGameStarted()) {
                     cancel();
                     return;
                 }
@@ -212,7 +212,7 @@ public class GamePeriodStates {
 
     public static void elimination() {
 
-        if (!Elevar.isGameRunning()) {
+        if (!ElevarServerUtils.hasGameStarted()) {
             announceWinner();
             return;
         }
@@ -243,7 +243,7 @@ public class GamePeriodStates {
             @Override
             public void run() {
 
-                if (!Elevar.isGameRunning()) {
+                if (!ElevarServerUtils.hasGameStarted()) {
                     cancel();
                     return;
                 }
@@ -280,7 +280,7 @@ public class GamePeriodStates {
             @Override
             public void run() {
 
-                if (!Elevar.isGameRunning()) {
+                if (!ElevarServerUtils.hasGameStarted()) {
                     cancel();
                     return;
                 }
@@ -316,7 +316,7 @@ public class GamePeriodStates {
 
     public static void overtime() {
 
-        if (!Elevar.isGameRunning()) {
+        if (!ElevarServerUtils.hasGameStarted()) {
             announceWinner();
             return;
         }
@@ -340,7 +340,7 @@ public class GamePeriodStates {
             @Override
             public void run() {
 
-                if (!Elevar.isGameRunning()) {
+                if (!ElevarServerUtils.hasGameStarted()) {
                     cancel();
                     return;
                 }
@@ -366,7 +366,6 @@ public class GamePeriodStates {
             @Override
             public synchronized void cancel() throws IllegalStateException {
                 Elevar.setPeriod(GamePeriod.LOBBY);
-                Elevar.setGameRunning(false);
                 announceWinner();
                 Bukkit.getServerTickManager().setFrozen(true);
                 Elevar.getBlockRisingRunnable().cancel();

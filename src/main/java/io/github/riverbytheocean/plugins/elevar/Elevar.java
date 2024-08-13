@@ -8,6 +8,7 @@ import io.github.riverbytheocean.plugins.elevar.game.listeners.general.GeneralCo
 import io.github.riverbytheocean.plugins.elevar.game.listeners.general.GeneralGhostChatListener;
 import io.github.riverbytheocean.plugins.elevar.game.listeners.general.GeneralHeightLimitListener;
 import io.github.riverbytheocean.plugins.elevar.game.listeners.general.GeneralPortalListener;
+import io.github.riverbytheocean.plugins.elevar.game.listeners.lobby.LobbyDamageListener;
 import io.github.riverbytheocean.plugins.elevar.game.listeners.second.SecondConnectionListener;
 import io.github.riverbytheocean.plugins.elevar.game.listeners.second.SecondDamageListener;
 import io.github.riverbytheocean.plugins.elevar.game.listeners.starter.StarterConnectionListener;
@@ -42,18 +43,8 @@ import java.util.*;
 
 TODO:
 
-Players
-- Allow people to spectate after death or temp banned (admins decide)
-
 GUIs
 - Sound cues for the GUIs
-
-World Related
-- Automatically kill people under a certain y-level "safe zone" (configurable)
-- Revive system (for admin abuse or unfair kills somehow)
-- Figure out how to handle nether travel
-
-- Start work on the actual minigame
 
 Work After I'm Finished With Pretty Much Everything Else
 - Team System (i'll try both a draft system and admins picking teams)
@@ -80,10 +71,6 @@ public final class Elevar extends JavaPlugin {
     @Getter
     @Setter
     private static BukkitRunnable blockRisingRunnable;
-
-    @Getter
-    @Setter
-    private static boolean gameRunning;
 
     @Getter
     private static List<UUID> bannedPlayers;
@@ -150,6 +137,8 @@ public final class Elevar extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new GeneralGhostChatListener(), instance);
         getServer().getPluginManager().registerEvents(new GeneralPortalListener(), instance);
         getServer().getPluginManager().registerEvents(new GeneralConnectionListener(), instance);
+
+        getServer().getPluginManager().registerEvents(new LobbyDamageListener(), instance);
 
         getServer().getPluginManager().registerEvents(new StarterDamageListener(), instance);
         getServer().getPluginManager().registerEvents(new StarterConnectionListener(), instance);
