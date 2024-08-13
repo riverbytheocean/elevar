@@ -13,6 +13,7 @@ import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.time.Duration;
@@ -55,6 +56,8 @@ public class GamePeriodStates {
 
     public static void starter() {
 
+        Bukkit.getOnlinePlayers().forEach(player -> player.getInventory().clear());
+
         if (!Elevar.isGameRunning()) {
             announceWinner();
             return;
@@ -71,6 +74,8 @@ public class GamePeriodStates {
             if (!player.isInvulnerable()) {
                 player.setGameMode(GameMode.SURVIVAL);
             }
+
+            player.getInventory().addItem(new ItemStack(Material.GOLDEN_CARROT, 16));
 
             player.sendMessage(
                     Component.text("The game has begun! Gather all you can before the next period!")
@@ -367,6 +372,8 @@ public class GamePeriodStates {
                 Elevar.getBlockRisingRunnable().cancel();
                 Elevar.setBlockHeight(ElevarServerUtils.createWorld("elevar_world").getMinHeight());
                 Elevar.getCurrentRoundPlayers().clear();
+
+                Bukkit.getOnlinePlayers().forEach(player -> player.getInventory().clear());
 
                 for (UUID bannedPlayer : Elevar.getBannedPlayers()) {
 

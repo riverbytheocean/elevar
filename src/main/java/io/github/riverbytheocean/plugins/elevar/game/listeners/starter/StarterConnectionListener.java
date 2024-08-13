@@ -17,6 +17,15 @@ public class StarterConnectionListener implements Listener {
             return;
         }
 
+        if (!event.getPlayer().getWorld().equals(ElevarServerUtils.createWorld("elevar_world"))) {
+            Location loc = ElevarServerUtils.createWorld("elevar_world").getHighestBlockAt(0, 0).getLocation().add(0, 1, 0);
+
+            event.getPlayer().teleport(loc);
+            event.getPlayer().setRespawnLocation(loc);
+
+            Elevar.getCurrentRoundPlayers().add(event.getPlayer().getUniqueId());
+        }
+
         if (Elevar.getCurrentRoundPlayers().contains(event.getPlayer().getUniqueId())) {
             return;
         }

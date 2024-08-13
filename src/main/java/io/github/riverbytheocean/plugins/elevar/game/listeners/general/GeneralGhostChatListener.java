@@ -1,6 +1,7 @@
 package io.github.riverbytheocean.plugins.elevar.game.listeners.general;
 
 import io.github.riverbytheocean.plugins.elevar.Elevar;
+import io.github.riverbytheocean.plugins.elevar.ElevarServerUtils;
 import io.papermc.paper.event.player.AsyncChatEvent;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -24,7 +25,7 @@ public class GeneralGhostChatListener implements Listener {
             return;
         }
 
-        if (!Elevar.isGameRunning()) {
+        if (!ElevarServerUtils.hasGameStarted()) {
             return;
         }
 
